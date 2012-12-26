@@ -9,8 +9,18 @@ class Twitter
 {
     const ENDPOINT = 'https://api.twitter.com';
 
+    /**
+     * @var Client
+     */
     private $client;
 
+    /**
+     * @param Client $client
+     * @param string $consumerKey
+     * @param string $consumerSecret
+     * @param string $userToken
+     * @param string $userSecret
+     */
     public function __construct(Client $client, $consumerKey, $consumerSecret, $userToken, $userSecret)
     {
         $this->client = $client;
@@ -22,6 +32,12 @@ class Twitter
         )));
     }
 
+    /**
+     * Performs a GET request to the Twitter API.
+     *
+     * @param  string $url
+     * @return array
+     */
     public function get($url)
     {
         $response = $this->client
@@ -31,6 +47,11 @@ class Twitter
         return $response->json();
     }
 
+    /**
+     * Returns the favorite tweets for the current user.
+     *
+     * @return array
+     */
     public function getFavorites()
     {
         return $this->get('1.1/favorites/list.json');

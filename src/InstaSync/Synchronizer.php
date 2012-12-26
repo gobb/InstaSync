@@ -7,16 +7,31 @@ use InstaSync\Service\Instapaper;
 
 class Synchronizer
 {
+    /**
+     * @var Twitter
+     */
     private $twitter;
 
+    /**
+     * @var Instapaper
+     */
     private $instapaper;
 
+    /**
+     * @param Twitter    $twitter
+     * @param Instapaper $instapaper
+     */
     public function __construct(Twitter $twitter, Instapaper $instapaper)
     {
         $this->twitter    = $twitter;
         $this->instapaper = $instapaper;
     }
 
+    /**
+     * Synchronize a Twitter account with an Instapaper account.
+     *
+     * @return int The number of URLs added
+     */
     public function synchronize()
     {
         $count = 0;
@@ -35,9 +50,15 @@ class Synchronizer
         return $count;
     }
 
-    private function extractUrl($url)
+    /**
+     * Returns the first URL found in the text, null otherwise.
+     *
+     * @param  string $text
+     * @return string
+     */
+    private function extractUrl($text)
     {
-        preg_match('#([http[s]+:[^ ]+)#', $url, $matches);
+        preg_match('#([http[s]+:[^ ]+)#', $text, $matches);
 
         if (isset($matches[0])) {
             return $matches[0];

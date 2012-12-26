@@ -13,6 +13,9 @@ class SyncCommand extends Command
 {
     const DEFAULT_CONFIG_FILENAME = '.instasync.yml';
 
+    /**
+     * {@inheritDoc}
+     */
     protected function configure()
     {
         $this
@@ -27,6 +30,9 @@ class SyncCommand extends Command
             );
     }
 
+    /**
+     * {@inheritDoc}
+     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         if ('~/' . self::DEFAULT_CONFIG_FILENAME === $configFile = $input->getOption('config-file')) {
