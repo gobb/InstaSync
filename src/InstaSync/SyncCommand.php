@@ -32,7 +32,7 @@ class SyncCommand extends Command
                 'and-delete',
                 null,
                 InputOption::VALUE_NONE,
-                'Delete the tweets once added on Instapaper'
+                'Delete the tweets once added on Instapaper.'
             );
     }
 
