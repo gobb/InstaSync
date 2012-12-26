@@ -1,0 +1,12 @@
+{
+    "finder": [
+        { "name": "*.php", "in": "src/" }
+    ],
+    "directories": [
+        "vendor"
+    ],
+    "main": "bin/instasync",
+    "output": "instasync.phar",
+    "stub": true,
+    "chmod": "0755"
+}
