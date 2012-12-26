@@ -15,7 +15,7 @@ class SyncCommand extends Command
     {
         $this
             ->setName('sync')
-            ->setDescription('Synchronize your Twitter favorites with Instapaper.')
+            ->setDescription('Synchronize your Twitter Favorites list with your Instapaper account.')
             ->addOption(
                 'config-file',
                 null,

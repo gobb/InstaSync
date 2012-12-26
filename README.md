@@ -1,10 +1,11 @@
 InstaSync
 =========
 
-InstaSync helps you synchronize your Twitter favorites with your Instapaper
-account. You need to create a [Twitter
+InstaSync helps you synchronize your Twitter Favorites list with your
+Instapaper account. You need to create a [Twitter
 application](https://dev.twitter.com/apps), and an access token, once you've
-created this application.
+created this application. You should configure a CRON task, every five minutes
+for instance.
 
 
 Usage
@@ -24,7 +25,7 @@ InstaSync needs a configuration file written in YAML with the following content:
 
 The default location for this file is: `~/.instasync.yml`.
 
-Start synchronizing your favorites by running the command below:
+Start synchronizing your favorites list by running the command below:
 
     php instasync.phar sync [--config-file[="..."]]
 
