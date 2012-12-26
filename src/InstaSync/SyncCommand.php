@@ -11,6 +11,8 @@ use Symfony\Component\Yaml\Yaml;
 
 class SyncCommand extends Command
 {
+    const DEFAULT_CONFIG_FILENAME = '.instasync.yml';
+
     protected function configure()
     {
         $this
@@ -21,17 +23,17 @@ class SyncCommand extends Command
                 null,
                 InputOption::VALUE_OPTIONAL,
                 'The InstaSync YAML configuration file to use.',
-                '~/.instasync.yml'
+                '~/' . self::DEFAULT_CONFIG_FILENAME
             );
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        if ('~/.instasync.yml' === $configFile = $input->getOption('config-file')) {
+        if ('~/' . self::DEFAULT_CONFIG_FILENAME === $configFile = $input->getOption('config-file')) {
             if (defined('PHP_WINDOWS_VERSION_MAJOR')) {
-                $configFile = getenv('APPDATA') . '/.instasync.yml';
+                $configFile = getenv('APPDATA') . '/' . self::DEFAULT_CONFIG_FILENAME;
             } else {
-                $configFile = rtrim(getenv('HOME'), '/') . '/.instasync.yml';
+                $configFile = rtrim(getenv('HOME'), '/') . '/' . self::DEFAULT_CONFIG_FILENAME;
             }
         }
 
