@@ -6,6 +6,6 @@ require __DIR__ . '/../vendor/autoload.php';
 use Symfony\Component\Console\Application;
 use InstaSync\SyncCommand;
 
-$application = new Application('InstaSync', 'dev');
+$application = new Application('InstaSync', '@package_version@');
 $application->add(new SyncCommand());
 $application->run();

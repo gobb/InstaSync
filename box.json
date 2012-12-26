@@ -1,12 +1,17 @@
 {
     "finder": [
-        { "name": "*.php", "in": "src/" }
+        {
+            "name": "*.php",
+            "in": "src/",
+            "exclude": ["Tests", "tests"]
+        }
     ],
     "directories": [
         "vendor"
     ],
     "main": "bin/instasync",
     "output": "instasync.phar",
+    "git-version": "package_version",
     "stub": true,
     "chmod": "0755"
 }
