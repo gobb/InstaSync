@@ -24,7 +24,7 @@ class SyncCommand extends Command
             ->addOption(
                 'config-file',
                 null,
-                InputOption::VALUE_OPTIONAL,
+                InputOption::VALUE_REQUIRED,
                 'The InstaSync YAML configuration file to use.',
                 '~/' . self::DEFAULT_CONFIG_FILENAME
             )
