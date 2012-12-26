@@ -27,10 +27,12 @@ class SyncCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        if (defined('PHP_WINDOWS_VERSION_MAJOR')) {
-            $configFile = getenv('APPDATA') . '/.instasync.yml';
-        } else {
-            $configFile = rtrim(getenv('HOME'), '/') . '/.instasync.yml';
+        if ('~/.instasync.yml' === $configFile = $input->getOption('config-file')) {
+            if (defined('PHP_WINDOWS_VERSION_MAJOR')) {
+                $configFile = getenv('APPDATA') . '/.instasync.yml';
+            } else {
+                $configFile = rtrim(getenv('HOME'), '/') . '/.instasync.yml';
+            }
         }
 
         $config = Yaml::parse($configFile);
