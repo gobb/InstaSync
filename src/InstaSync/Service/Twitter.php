@@ -41,7 +41,7 @@ class Twitter
     public function get($url)
     {
         $response = $this->client
-            ->get(sprintf('%s/%s', self::ENDPOINT, $url), null)
+            ->get(sprintf('%s/%s', self::ENDPOINT, $url))
             ->send();
 
         return $response->json();
@@ -55,5 +55,22 @@ class Twitter
     public function getFavorites()
     {
         return $this->get('1.1/favorites/list.json');
+    }
+
+    /**
+     * Delete a tweet in the user's favorites list.
+     *
+     * @param  int     $id
+     * @return boolean
+     */
+    public function deleteFavorite($id)
+    {
+        $response = $this->client
+            ->post(sprintf('%s/1.1/favorites/destroy.json', self::ENDPOINT), null, array(
+                'id' => $id,
+            ))
+            ->send();
+
+        return $response->isSuccessful();
     }
 }

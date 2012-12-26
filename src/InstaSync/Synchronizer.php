@@ -30,9 +30,10 @@ class Synchronizer
     /**
      * Synchronize a Twitter account with an Instapaper account.
      *
-     * @return int The number of URLs added
+     * @param  boolean $deleteTweets Whether to delete the tweets once added
+     * @return int     The number of URLs added
      */
-    public function synchronize()
+    public function synchronize($deleteTweets = false)
     {
         $count = 0;
         foreach ($this->twitter->getFavorites() as $favorite) {
@@ -43,6 +44,10 @@ class Synchronizer
             );
 
             if (null !== $url && $this->instapaper->addUrl($url, $source)) {
+                if ($deleteTweets) {
+                    $this->twitter->deleteFavorite($favorite['id']);
+                }
+
                 $count++;
             }
         }

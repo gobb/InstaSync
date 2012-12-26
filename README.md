@@ -36,7 +36,11 @@ The default location for this file is: `~/.instasync.yml`.
 
 Start synchronizing your favorites list by running the command below:
 
-    php instasync.phar sync [--config-file[="..."]]
+    php instasync.phar sync [--config-file="..."] [--and-delete]
+
+You can specify a configuration file using the `--config-file` option. Also, you
+can delete the tweets once they are added to your Instapaper account by using
+the `--and-delete` option.
 
 
 Building the PHP Archive (PHAR)

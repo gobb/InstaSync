@@ -27,6 +27,12 @@ class SyncCommand extends Command
                 InputOption::VALUE_OPTIONAL,
                 'The InstaSync YAML configuration file to use.',
                 '~/' . self::DEFAULT_CONFIG_FILENAME
+            )
+            ->addOption(
+                'and-delete',
+                null,
+                InputOption::VALUE_NONE,
+                'Delete the tweets once added on Instapaper'
             );
     }
 
@@ -61,6 +67,9 @@ class SyncCommand extends Command
         );
 
         $synchronizer = new Synchronizer($twitter, $instapaper);
-        $output->writeln(sprintf('Added <info>%d</info> new URLs.', $synchronizer->synchronize()));
+        $output->writeln(sprintf(
+            'Added <info>%d</info> new URLs.',
+            $synchronizer->synchronize($input->getOption('and-delete'))
+        ));
     }
 }
