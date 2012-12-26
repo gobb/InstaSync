@@ -21,15 +21,16 @@ class Instapaper
         $this->password = $password;
     }
 
-    public function addUrl($url)
+    public function addUrl($url, $source = null)
     {
         $response = $this->client->post(
             sprintf('%s/add', self::ENDPOINT),
             null,
             array(
-                'username' => $this->username,
-                'password' => $this->password,
-                'url'      => $url,
+                'username'  => $this->username,
+                'password'  => $this->password,
+                'url'       => $url,
+                'selection' => $source,
             )
         )->send();
 

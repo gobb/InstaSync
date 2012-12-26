@@ -20,17 +20,15 @@ class Synchronizer
     public function synchronize()
     {
         $count = 0;
-        if (null !== $favorites = $this->twitter->getFavorites()) {
-            foreach ($favorites as $favorite) {
-                $url = $this->extractUrl($favorite['text']);
+        foreach ($this->twitter->getFavorites() as $favorite) {
+            $url    = $this->extractUrl($favorite['text']);
+            $source = sprintf('Original tweet: https://twitter.com/%s/status/%d',
+                $favorite['user']['screen_name'],
+                $favorite['id']
+            );
 
-                if (null === $url) {
-                    continue;
-                }
-
-                if ($this->instapaper->addUrl($url)) {
-                    $count++;
-                }
+            if (null !== $url && $this->instapaper->addUrl($url, $source)) {
+                $count++;
             }
         }
 
