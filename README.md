@@ -8,6 +8,15 @@ created this application. You should configure a CRON task, every five minutes
 for instance.
 
 
+Installation
+------------
+
+Download the executable at:
+[http://williamdurand.fr/InstaSync/instasync.phar](http://williamdurand.fr/InstaSync/instasync.phar).
+
+You need a PHP environment.
+
+
 Usage
 -----
 
