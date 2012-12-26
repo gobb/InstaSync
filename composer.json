@@ -1,0 +1,14 @@
+{
+    "name": "willdurand/instasync",
+    "require": {
+        "guzzle/guzzle": "3.0.*",
+        "themattharris/tmhoauth": "dev-master",
+        "symfony/console": "2.1.*"
+    },
+    "authors": [
+        {
+            "name": "William DURAND",
+            "email": "william.durand1@gmail.com"
+        }
+    ]
+}
